@@ -6,7 +6,7 @@ fs.readFile('input.txt', 'utf-8', (err, data) =>{
         return
     }
 
-    let commands = data.split('\r\n');
+    let commands = data.split('\n');
     let result = '';
     let stack = [];
 
@@ -18,24 +18,24 @@ fs.readFile('input.txt', 'utf-8', (err, data) =>{
         switch(commands[i]){
             case `push ${commands[i].slice(5)}`:
                 stack.push(commands[i].slice(5));
-                result += 'ok\r\n';
+                result += 'ok\n';
                 break;
             case 'pop':
                 if(stack[0]){
-                    result += stack.pop()+'\r\n';
-                }else{result += 'error\r\n';}
+                    result += stack.pop()+'\n';
+                }else{result += 'error\n';}
                 break;
             case 'back':
                 if(stack[0]){
-                    result += stack.at(-1)+'\r\n';
-                }else{result += 'error\r\n';}
+                    result += stack.at(-1)+'\n';
+                }else{result += 'error\n';}
                 break;     
             case 'size':
-                result += stack.length + '\r\n'; 
+                result += stack.length + '\n'; 
                 break
             case 'clear':
                 stack = [];
-                result += 'ok\r\n';
+                result += 'ok\n';
                 break 
         }
     };
